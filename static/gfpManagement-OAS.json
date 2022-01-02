@@ -1,0 +1,302 @@
+{
+    "openapi": "3.0.2",
+    "info": {
+        "title": "gfpManagement",
+        "version": "1.0.0",
+        "description": "API for crud gfp (games-food-programmingLenguages)"
+    },
+    "paths": {
+        "/V1/Enterprise/crud-gfp/add": {
+            "summary": "add any gfp",
+            "description": "Conocimiento de cliente",
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GFPRq"
+                            },
+                            "examples": {
+                                "GFP Request": {
+                                    "value": {
+                                        "name": "Uncharted 3",
+                                        "description": "Mejor juego del año",
+                                        "image": "https://imagenUncharted/123"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Manege Products"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/x-rquid"
+                    },
+                    {
+                        "$ref": "#/components/parameters/x-CustCellphone"
+                    },
+                    {
+                        "$ref": "#/components/parameters/x-custidenttype"
+                    },
+                    {
+                        "$ref": "#/components/parameters/x-custidentnum"
+                    },
+                    {
+                        "$ref": "#/components/parameters/x-Product"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MsgRsDefaultDef"
+                                },
+                                "examples": {
+                                    "MsgRsDefaultDef": {
+                                        "value": {
+                                            "data": {
+                                                "status": 200,
+                                                "description": "Creación del GFP Exitosa"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "description": "Answer valid customer knowlegment"
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/BadRequestRs"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/UnauthorizedRs"
+                    },
+                    "403": {
+                        "$ref": "#/components/responses/ForbiddenRs"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/GenericErrorRs"
+                    }
+                },
+                "security": [
+                    {
+                        "X-Api-Key": []
+                    }
+                ],
+                "operationId": "Customer Knowlegment",
+                "description": "Recurso que permite hacer conocimiento del cliente"
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "GFPRq": {
+                "required": [
+                    "name",
+                    "description",
+                    "image"
+                ],
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "description": "Nombre del GFP",
+                        "maxLength": 15,
+                        "minLength": 1,
+                        "pattern": "^[a-zA-Z0-9]{1,15}$",
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "Descripción del GFP",
+                        "maxLength": 40,
+                        "minLength": 1,
+                        "pattern": "^[a-zA-Z0-9 ]{1,40}$",
+                        "type": "string"
+                    },
+                    "image": {
+                        "description": "Imagen del GFP",
+                        "maxLength": 255,
+                        "minLength": 1,
+                        "pattern": "^[a-zA-Z0-9]{1,255}$",
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false
+            }
+        },
+        "responses": {
+            "BadRequestRs": {
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/ErrorMessageDef"
+                        },
+                        "examples": {
+                            "BadRequestError": {
+                                "value": {
+                                    "error": {
+                                        "status": 400,
+                                        "error": "Bad Request",
+                                        "description": "error description",
+                                        "internalCode": "6fa59369-3500-41c6-937a-d633e56f045d"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "description": "(400) Respuesta obtenida cuando los parametros de busqueda son incorrectos."
+            },
+            "ForbiddenRs": {
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/ErrorMessageDef"
+                        },
+                        "examples": {
+                            "ForbiddenError": {
+                                "value": {
+                                    "error": {
+                                        "status": 403,
+                                        "error": "Forbidden",
+                                        "description": "error description",
+                                        "internalCode": "6fa59369-3500-41c6-937a-d633e56f045d"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "description": "(403) Respuesta obtenida cuando se presenta error de autorización."
+            },
+            "GenericErrorRs": {
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/ErrorMessageDef"
+                        },
+                        "examples": {
+                            "GenericError": {
+                                "value": {
+                                    "error": {
+                                        "status": 500,
+                                        "error": "Interval Server Error",
+                                        "description": "error description",
+                                        "internalCode": "6fa59369-3500-41c6-937a-d633e56f045d"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "description": "(500) Respuesta obtenida cuando ocurre un error de servidor."
+            },
+            "UnauthorizedRs": {
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/ErrorMessageDef"
+                        },
+                        "examples": {
+                            "UnauthorizedError": {
+                                "value": {
+                                    "error": {
+                                        "status": 401,
+                                        "error": "Unauthorized",
+                                        "description": "Message",
+                                        "internalCode": "6fa59369-3500-41c6-937a-d633e56f045d"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "description": "(401) Respuesta obtenida cuando se presenta error de autorización."
+            }
+        },
+        "parameters": {
+            "x-rquid": {
+                "examples": {
+                    "x-rquid": {
+                        "value": "4ce9e7e1-2272-45f0-91e4-0281ec07e351"
+                    }
+                },
+                "name": "x-rquid",
+                "description": "Identificador único de la petición",
+                "schema": {
+                    "maxLength": 36,
+                    "pattern": "[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}",
+                    "type": "string"
+                },
+                "in": "header",
+                "required": true
+            },
+            "x-custidenttype": {
+                "name": "x-custidenttype",
+                "schema": {
+                    "enum": [
+                        "CC"
+                    ],
+                    "type": "string"
+                },
+                "in": "header",
+                "required": true
+            },
+            "x-custidentnum": {
+                "name": "x-custidentnum",
+                "description": "Documento de identidad de cliente",
+                "schema": {
+                    "maxLength": 25,
+                    "minLength": 1,
+                    "pattern": "^([0-9]){1,25}",
+                    "type": "string"
+                },
+                "in": "header",
+                "required": true
+            },
+            "x-CustCellphone": {
+                "name": "x-custcellphone",
+                "description": "Número de celular del consumidor del API",
+                "schema": {
+                    "maxLength": 10,
+                    "minLength": 10,
+                    "pattern": "^[0-9]{10,10}$",
+                    "type": "string"
+                },
+                "in": "header",
+                "required": true
+            },
+            "x-Product": {
+                "name": "x-product",
+                "description": "Producto a guardar",
+                "schema": {
+                    "enum": [
+                        "game",
+                        "food",
+                        "programmingLenguage"
+                    ],
+                    "type": "string"
+                },
+                "in": "header",
+                "required": true
+            }
+        },
+        "securitySchemes": {
+            "X-Api-Key": {
+                "type": "apiKey",
+                "description": "Assigned to each client/product to consumes",
+                "name": "X-Api-Key",
+                "in": "header"
+            }
+        }
+    },
+    "x-amazon-apigateway-request-validators": {
+        "Validate body, query string parameters, and headers": {
+            "validateRequestParameters": true,
+            "validateRequestBody": true
+        }
+    }
+}

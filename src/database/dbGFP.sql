@@ -1,0 +1,27 @@
+CREATE DATABASE gfp_005;
+
+USE gfp_005;
+
+CREATE TABLE game(
+    id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(180),
+    description VARCHAR(255),
+    image VARCHAR(200),
+    create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE food(
+    id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(180),
+    description VARCHAR(255),
+    image VARCHAR(200),
+    create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE programming_lenguages(
+    id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(180),
+    description VARCHAR(255),
+    image VARCHAR(200),
+    create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
