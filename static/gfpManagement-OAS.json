@@ -6,7 +6,7 @@
         "description": "API for crud gfp (games-food-programmingLenguages)"
     },
     "paths": {
-        "/V1/Enterprise/crud-gfp/add": {
+        "/V1/Enterprise/gfp/add": {
             "summary": "add any gfp",
             "description": "Conocimiento de cliente",
             "post": {
@@ -46,6 +46,149 @@
                     },
                     {
                         "$ref": "#/components/parameters/x-Product"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MsgRsDefaultDef"
+                                },
+                                "examples": {
+                                    "MsgRsDefaultDef": {
+                                        "value": {
+                                            "data": {
+                                                "status": 200,
+                                                "description": "Creación del GFP Exitosa"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "description": "Answer valid customer knowlegment"
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/BadRequestRs"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/UnauthorizedRs"
+                    },
+                    "403": {
+                        "$ref": "#/components/responses/ForbiddenRs"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/GenericErrorRs"
+                    }
+                },
+                "security": [
+                    {
+                        "X-Api-Key": []
+                    }
+                ],
+                "operationId": "Customer Knowlegment",
+                "description": "Recurso que permite hacer conocimiento del cliente"
+            }
+        },
+        "/V1/Enterprise/gfp/all": {
+            "summary": "all gfp",
+            "description": "Traer todos los GFP",
+            "get": {
+                "tags": [
+                    "Manege Products"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/x-rquid"
+                    },
+                    {
+                        "$ref": "#/components/parameters/x-CustCellphone"
+                    },
+                    {
+                        "$ref": "#/components/parameters/x-custidenttype"
+                    },
+                    {
+                        "$ref": "#/components/parameters/x-custidentnum"
+                    },
+                    {
+                        "$ref": "#/components/parameters/x-Product"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MsgRsDefaultDef"
+                                },
+                                "examples": {
+                                    "MsgRsDefaultDef": {
+                                        "value": {
+                                            "data": {
+                                                "status": 200,
+                                                "description": "Creación del GFP Exitosa"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "description": "Answer valid customer knowlegment"
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/BadRequestRs"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/UnauthorizedRs"
+                    },
+                    "403": {
+                        "$ref": "#/components/responses/ForbiddenRs"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/GenericErrorRs"
+                    }
+                },
+                "security": [
+                    {
+                        "X-Api-Key": []
+                    }
+                ],
+                "operationId": "Customer Knowlegment",
+                "description": "Recurso que permite hacer conocimiento del cliente"
+            }
+        },
+        "/V1/Enterprise/gfp/{id}": {
+            "summary": "one gfp",
+            "description": "Traer un GFP",
+            "get": {
+                "tags": [
+                    "Manege Products"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/x-rquid"
+                    },
+                    {
+                        "$ref": "#/components/parameters/x-CustCellphone"
+                    },
+                    {
+                        "$ref": "#/components/parameters/x-custidenttype"
+                    },
+                    {
+                        "$ref": "#/components/parameters/x-custidentnum"
+                    },
+                    {
+                        "$ref": "#/components/parameters/x-Product"
+                    },
+                    {
+                        "name": "id",
+                        "description": "Código del GMF",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "required": true
                     }
                 ],
                 "responses": {

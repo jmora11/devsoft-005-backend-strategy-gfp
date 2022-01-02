@@ -4,13 +4,15 @@ import actuator from 'express-actuator';
 import logger from 'morgan';
 import path from 'path';
 import config from './config';
-import IGFPRs from './models/IGFPRs';
+import dbInit from './models/database/init';
+
+dbInit();
  
 import routerGFP from './routes/router';
 
 const app = express();
 const apiPath = config.apiPath;
-const fullApiPath = `${apiPath}/V1/Enterprise/crud-gfp/`;
+const fullApiPath = `${apiPath}/V1/Enterprise/`;
  
 app.use(logger('dev'));
 app.use(express.json());
@@ -32,6 +34,7 @@ app.use((_req, res, next) => {
 app.use(fullApiPath, routerGFP);
 
 app.use((err: any, req: any, res: any, next:any) => {
+   console.log('AAAAAAAAAAAAAAAAAAA')
    res.status(err.statusCode).json({
       data: {
          status: err.statusCode,

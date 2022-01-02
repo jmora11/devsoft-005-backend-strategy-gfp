@@ -1,5 +1,5 @@
 export interface IGFPRq{
-    nombre: string,
-    descripcion: string,
+    name: string,
+    description: string,
     image: string
 };

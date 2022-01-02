@@ -1,3 +1,4 @@
+import { DefaultResponseDTO } from "../../models/DefaultResponseDTO";
 import { IGFPRq } from "../../models/IGFPRq";
 import IGFPRs from "../../models/IGFPRs";
 import { RequestHeadersModel } from "../../models/IRequestHeaders";
@@ -15,7 +16,7 @@ export default class GFPContext {
         }
     }
 
-    public async saveGFP(headers: RequestHeadersModel, body: IGFPRq): Promise<IGFPRs> {
+    public async saveGFP(headers: RequestHeadersModel, body: IGFPRq): Promise<DefaultResponseDTO> {
         try {
             return await this.gfpImplementation.saveGFP(headers, body);
         } catch (error) {
@@ -23,7 +24,7 @@ export default class GFPContext {
         }
     }
 
-    public async getAllGFP(headers: RequestHeadersModel, body: IGFPRq): Promise<IGFPRs> {
+    public async getAllGFP(headers: RequestHeadersModel, body: IGFPRq): Promise<DefaultResponseDTO> {
         try {
             return await this.gfpImplementation.getAllGFP(headers, body);
         } catch (error) {
@@ -31,7 +32,7 @@ export default class GFPContext {
         }
     }
 
-    public async getGFPById(headers: RequestHeadersModel, id: number): Promise<IGFPRs> {
+    public async getGFPById(headers: RequestHeadersModel, id: number): Promise<DefaultResponseDTO> {
         try {
             return await this.gfpImplementation.getGFPById(headers, id);
         } catch (error) {
@@ -39,7 +40,7 @@ export default class GFPContext {
         }
     }
 
-    public async updateGFPById(headers: RequestHeadersModel, body: IGFPRq, id: number): Promise<IGFPRs> {
+    public async updateGFPById(headers: RequestHeadersModel, body: IGFPRq, id: number): Promise<DefaultResponseDTO> {
         try {
             return await this.gfpImplementation.updateGFPById(headers, body, id);
         } catch (error) {
@@ -47,7 +48,7 @@ export default class GFPContext {
         }
     }
 
-    public async deleteGFPById(headers: RequestHeadersModel, id: number): Promise<IGFPRs> {
+    public async deleteGFPById(headers: RequestHeadersModel, id: number): Promise<DefaultResponseDTO> {
         try {
             return await this.gfpImplementation.deleteGFPById(headers, id);
         } catch (error) {

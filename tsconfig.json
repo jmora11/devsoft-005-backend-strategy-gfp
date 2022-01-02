@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es6",
-    // "experimentalDecorators": true,                   /* Enable experimental support for TC39 stage 2 draft decorators. */
+    "experimentalDecorators": true,
+    "target": "es6",                  /* Enable experimental support for TC39 stage 2 draft decorators. */
     "module": "commonjs",                                /* Specify what module code is generated. */
     "outDir": "./build",                                   /* Specify an output folder for all emitted files. */
     "esModuleInterop": true,
