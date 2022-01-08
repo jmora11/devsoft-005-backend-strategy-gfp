@@ -30,6 +30,18 @@ class SecurityRouter {
       validator.validate('get', '/V1/Enterprise/gfp/{id}'),
       gfpController.getById
     );
+
+    this.router.put(
+      '/gfp/update/:id',
+      validator.validate('put', '/V1/Enterprise/gfp/update/{id}'),
+      gfpController.update
+    );
+
+    this.router.delete(
+      '/gfp/delete/:id',
+      validator.validate('delete', '/V1/Enterprise/gfp/delete/{id}'),
+      gfpController.delete
+    );
   }
 }
 

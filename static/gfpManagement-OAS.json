@@ -3,33 +3,18 @@
     "info": {
         "title": "gfpManagement",
         "version": "1.0.0",
-        "description": "API for crud gfp (games-food-programmingLenguages)"
+        "description": "API for crud GFP (GAMES  -   FOOD   -   PROGRAMMING HARDWARE) implements Strategy Pattern"
     },
     "paths": {
         "/V1/Enterprise/gfp/add": {
             "summary": "add any gfp",
-            "description": "Conocimiento de cliente",
+            "description": "Añadir un nuevo GFP",
             "post": {
                 "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/GFPRq"
-                            },
-                            "examples": {
-                                "GFP Request": {
-                                    "value": {
-                                        "name": "Uncharted 3",
-                                        "description": "Mejor juego del año",
-                                        "image": "https://imagenUncharted/123"
-                                    }
-                                }
-                            }
-                        }
-                    }
+                    "$ref": "#/components/schemas/MsgRqBodyDef"
                 },
                 "tags": [
-                    "Manege Products"
+                    "Manege GFPs"
                 ],
                 "parameters": [
                     {
@@ -50,53 +35,22 @@
                 ],
                 "responses": {
                     "200": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/MsgRsDefaultDef"
-                                },
-                                "examples": {
-                                    "MsgRsDefaultDef": {
-                                        "value": {
-                                            "data": {
-                                                "status": 200,
-                                                "description": "Creación del GFP Exitosa"
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        },
-                        "description": "Answer valid customer knowlegment"
-                    },
-                    "400": {
-                        "$ref": "#/components/responses/BadRequestRs"
-                    },
-                    "401": {
-                        "$ref": "#/components/responses/UnauthorizedRs"
-                    },
-                    "403": {
-                        "$ref": "#/components/responses/ForbiddenRs"
+                        "$ref": "#/components/responses/OkRs"
                     },
                     "500": {
                         "$ref": "#/components/responses/GenericErrorRs"
                     }
                 },
-                "security": [
-                    {
-                        "X-Api-Key": []
-                    }
-                ],
-                "operationId": "Customer Knowlegment",
-                "description": "Recurso que permite hacer conocimiento del cliente"
+                "operationId": "Create (GFP name)",
+                "description": "Recurso que permite hacer la creación de un GFP"
             }
         },
         "/V1/Enterprise/gfp/all": {
-            "summary": "all gfp",
+            "summary": "get all gfp",
             "description": "Traer todos los GFP",
             "get": {
                 "tags": [
-                    "Manege Products"
+                    "Manege GFPs"
                 ],
                 "parameters": [
                     {
@@ -117,45 +71,14 @@
                 ],
                 "responses": {
                     "200": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/MsgRsDefaultDef"
-                                },
-                                "examples": {
-                                    "MsgRsDefaultDef": {
-                                        "value": {
-                                            "data": {
-                                                "status": 200,
-                                                "description": "Creación del GFP Exitosa"
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        },
-                        "description": "Answer valid customer knowlegment"
-                    },
-                    "400": {
-                        "$ref": "#/components/responses/BadRequestRs"
-                    },
-                    "401": {
-                        "$ref": "#/components/responses/UnauthorizedRs"
-                    },
-                    "403": {
-                        "$ref": "#/components/responses/ForbiddenRs"
+                        "$ref":"#/components/responses/OkGetAllRs"
                     },
                     "500": {
                         "$ref": "#/components/responses/GenericErrorRs"
                     }
                 },
-                "security": [
-                    {
-                        "X-Api-Key": []
-                    }
-                ],
-                "operationId": "Customer Knowlegment",
-                "description": "Recurso que permite hacer conocimiento del cliente"
+                "operationId": "Get all (GFP name)",
+                "description": "Recurso que permite hacer la consulta de todos los (GFP name)"
             }
         },
         "/V1/Enterprise/gfp/{id}": {
@@ -163,7 +86,7 @@
             "description": "Traer un GFP",
             "get": {
                 "tags": [
-                    "Manege Products"
+                    "Manege GFPs"
                 ],
                 "parameters": [
                     {
@@ -182,56 +105,109 @@
                         "$ref": "#/components/parameters/x-Product"
                     },
                     {
-                        "name": "id",
-                        "description": "Código del GMF",
-                        "schema": {
-                            "type": "string"
-                        },
-                        "in": "path",
-                        "required": true
+                        "$ref": "#/components/parameters/id"
                     }
                 ],
                 "responses": {
                     "200": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/MsgRsDefaultDef"
-                                },
-                                "examples": {
-                                    "MsgRsDefaultDef": {
-                                        "value": {
-                                            "data": {
-                                                "status": 200,
-                                                "description": "Creación del GFP Exitosa"
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        },
-                        "description": "Answer valid customer knowlegment"
+                        "$ref": "#/components/responses/OkGetOneRs"
                     },
-                    "400": {
-                        "$ref": "#/components/responses/BadRequestRs"
-                    },
-                    "401": {
-                        "$ref": "#/components/responses/UnauthorizedRs"
-                    },
-                    "403": {
-                        "$ref": "#/components/responses/ForbiddenRs"
+                    "404": {
+                        "$ref": "#/components/responses/NotFoundRs"
                     },
                     "500": {
                         "$ref": "#/components/responses/GenericErrorRs"
                     }
                 },
-                "security": [
+                "operationId": "Get one (GFP name)",
+                "description": "Recurso que permite traer solo un (GFP name)"
+            }
+        },
+        "/V1/Enterprise/gfp/update/{id}": {
+            "summary": "add any gfp",
+            "description": "Conocimiento de cliente",
+            "put": {
+                "requestBody": {
+                    "$ref": "#/components/schemas/MsgRqBodyUpdateDef"
+                },
+                "tags": [
+                    "Manege GFPs"
+                ],
+                "parameters": [
                     {
-                        "X-Api-Key": []
+                        "$ref": "#/components/parameters/x-rquid"
+                    },
+                    {
+                        "$ref": "#/components/parameters/x-CustCellphone"
+                    },
+                    {
+                        "$ref": "#/components/parameters/x-custidenttype"
+                    },
+                    {
+                        "$ref": "#/components/parameters/x-custidentnum"
+                    },
+                    {
+                        "$ref": "#/components/parameters/x-Product"
+                    },
+                    {
+                        "$ref": "#/components/parameters/id"
                     }
                 ],
-                "operationId": "Customer Knowlegment",
-                "description": "Recurso que permite hacer conocimiento del cliente"
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/OkUpdateRs"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFoundRs"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/GenericErrorRs"
+                    }
+                },
+                "operationId": "Update (GFP name)",
+                "description": "Recurso que permite actualizar un (GFP name)"
+            }
+        },
+        "/V1/Enterprise/gfp/delete/{id}": {
+            "summary": "delete one gfp",
+            "description": "Eliminar un (GFP name)",
+            "delete": {
+                "tags": [
+                    "Manege GFPs"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/x-rquid"
+                    },
+                    {
+                        "$ref": "#/components/parameters/x-CustCellphone"
+                    },
+                    {
+                        "$ref": "#/components/parameters/x-custidenttype"
+                    },
+                    {
+                        "$ref": "#/components/parameters/x-custidentnum"
+                    },
+                    {
+                        "$ref": "#/components/parameters/x-Product"
+                    },
+                    {
+                        "$ref": "#/components/parameters/id"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/OkDeleteRs"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFoundRs"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/GenericErrorRs"
+                    }
+                },
+                "operationId": "Delete (GFP name)",
+                "description": "Recurso que permite eliminar un (GFP name)"
             }
         }
     },
@@ -268,96 +244,306 @@
                     }
                 },
                 "additionalProperties": false
+            },
+            "GFPUpdateRq": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "description": "Nombre del GFP",
+                        "maxLength": 15,
+                        "minLength": 1,
+                        "pattern": "^[a-zA-Z0-9]{1,15}$",
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "Descripción del GFP",
+                        "maxLength": 40,
+                        "minLength": 1,
+                        "pattern": "^[a-zA-Z0-9 ]{1,40}$",
+                        "type": "string"
+                    },
+                    "image": {
+                        "description": "Imagen del GFP",
+                        "maxLength": 255,
+                        "minLength": 1,
+                        "pattern": "^[a-zA-Z0-9]{1,255}$",
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "MsgRqBodyDef": {
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/GFPRq"
+                        },
+                        "examples": {
+                            "GFP Request": {
+                                "value": {
+                                    "name": "Uncharted 3",
+                                    "description": "Mejor juego del año",
+                                    "image": "https://imagenUncharted/123"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "MsgRqBodyUpdateDef": {
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/GFPUpdateRq"
+                        },
+                        "examples": {
+                            "GFP Request": {
+                                "value": {
+                                    "name": "Uncharted 3",
+                                    "description": "Mejor juego del año",
+                                    "image": "https://imagenUncharted/123"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "MsgRsDefaultDef": {
+                "description": "Respuesta determinada",
+                "type": "object",
+                "properties": {
+                    "data":{
+                        "description": "Objeto que almacena la data de respuesta",
+                        "type": "object",
+                        "properties": {
+                            "status": {
+                                "description": "Código de estado de la petición",
+                                "type": "number",
+                                "enum": [
+                                    200,
+                                    404,
+                                    500
+                                ]
+                            },
+                            "description": {
+                                "description": "Descripción del estado de la petición",
+                                "maxLength": 40,
+                                "minLength": 1,
+                                "pattern": "^[a-zA-Z0-9 ]{1,40}$",
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "additionalProperties": false
+            },
+            "getAllGFPArrayDef": {
+                "type": "object",
+                "properties": {
+                    "(GFP name)": {
+                        "type": "array",
+                        "items": {
+                            "$ref":"#/components/schemas/getAllGFPItemsDef"
+                        }
+                    }
+                },
+                "additionalProperties": false
+            },
+            "getAllGFPItemsDef": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "description": "Id del GFP",
+                        "type": "number"
+                    },
+                    "name": {
+                        "description": "Nombre del GFP",
+                        "type": "string"
+                    },
+                    "image": {
+                        "description": "Imagen del GFP",
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "Descripcion del GFP",
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "description": "Fecha de creación del GFP",
+                        "type": "string"
+                    },
+                    "updatedAt": {
+                        "description": "Fecha de actualización del GFP",
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false
             }
         },
         "responses": {
-            "BadRequestRs": {
+            "OkRs": {
                 "content": {
                     "application/json": {
                         "schema": {
-                            "$ref": "#/components/schemas/ErrorMessageDef"
+                            "$ref": "#/components/schemas/MsgRsDefaultDef"
                         },
                         "examples": {
-                            "BadRequestError": {
+                            "MsgRsDefaultDef": {
                                 "value": {
-                                    "error": {
-                                        "status": 400,
-                                        "error": "Bad Request",
-                                        "description": "error description",
-                                        "internalCode": "6fa59369-3500-41c6-937a-d633e56f045d"
+                                    "data": {
+                                        "status": 200,
+                                        "description": "Creación del (GFP name) exitosa"
                                     }
                                 }
                             }
                         }
                     }
                 },
-                "description": "(400) Respuesta obtenida cuando los parametros de busqueda son incorrectos."
+                "description": "Answer valid gfp creation"
             },
-            "ForbiddenRs": {
+            "OkGetAllRs": {
                 "content": {
                     "application/json": {
                         "schema": {
-                            "$ref": "#/components/schemas/ErrorMessageDef"
+                            "$ref": "#/components/schemas/getAllGFPArrayDef"
                         },
                         "examples": {
-                            "ForbiddenError": {
+                            "getAllGFPArrayDef": {
                                 "value": {
-                                    "error": {
-                                        "status": 403,
-                                        "error": "Forbidden",
-                                        "description": "error description",
-                                        "internalCode": "6fa59369-3500-41c6-937a-d633e56f045d"
+                                    "Games": [
+                                        {
+                                            "id": 2,
+                                            "name": "Halo 2",
+                                            "image": "url-image",
+                                            "description": "Game of X-Box",
+                                            "createdAt": "2022-01-02T20:33:56.000Z",
+                                            "updatedAt": "2022-01-02T20:33:56.000Z"
+                                        },
+                                        {
+                                            "id": 5,
+                                            "name": "Uncharted 3",
+                                            "image": "url-image",
+                                            "description": "Game of the year",
+                                            "createdAt": "2022-01-02T21:23:39.000Z",
+                                            "updatedAt": "2022-01-02T21:23:39.000Z"
+                                        },
+                                        {
+                                            "id": 6,
+                                            "name": "Fortnite",
+                                            "image": "url-image",
+                                            "description": "Best game since 2018",
+                                            "createdAt": "2022-01-02T21:45:43.000Z",
+                                            "updatedAt": "2022-01-02T21:45:43.000Z"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "description": "Answer valid gfp creation"
+            },
+            "OkGetOneRs": {
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/getAllGFPItemsDef"
+                        },
+                        "examples": {
+                            "MsgRsDefaultDef": {
+                                "value": {
+                                    "id": 2,
+                                    "name": "Halo 2",
+                                    "image": "url-image",
+                                    "description": "Game of X-Box",
+                                    "createdAt": "2022-01-02T20:33:56.000Z",
+                                    "updatedAt": "2022-01-02T20:33:56.000Z"
+                                }
+                            }
+                        }
+                    }
+                },
+                "description": "Answer valid get one (GFP name)"
+            },
+            "OkUpdateRs": {
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/MsgRsDefaultDef"
+                        },
+                        "examples": {
+                            "MsgRsDefaultDef": {
+                                "value": {
+                                    "data": {
+                                        "status": 200,
+                                        "description": "Actualización del (GFP name) exitosa"
                                     }
                                 }
                             }
                         }
                     }
                 },
-                "description": "(403) Respuesta obtenida cuando se presenta error de autorización."
+                "description": "Answer valid gfp creation"
+            },
+            "OkDeleteRs": {
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/MsgRsDefaultDef"
+                        },
+                        "examples": {
+                            "MsgRsDefaultDef": {
+                                "value": {
+                                    "data": {
+                                        "status": 200,
+                                        "description": "Eliminación del (GFP name) exitosa"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "description": "Answer valid gfp creation"
+            },
+            "NotFoundRs": {
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/MsgRsDefaultDef"
+                        },
+                        "examples": {
+                            "MsgRsDefaultDef": {
+                                "value": {
+                                    "data": {
+                                        "status": 404,
+                                        "description": "El (GFP name) no fue encotrado"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "description": "Answer not found gfp (operation)"
             },
             "GenericErrorRs": {
                 "content": {
                     "application/json": {
                         "schema": {
-                            "$ref": "#/components/schemas/ErrorMessageDef"
+                            "$ref": "#/components/schemas/MsgRsDefaultDef"
                         },
                         "examples": {
-                            "GenericError": {
+                            "MsgRsDefaultDef": {
                                 "value": {
-                                    "error": {
+                                    "data": {
                                         "status": 500,
-                                        "error": "Interval Server Error",
-                                        "description": "error description",
-                                        "internalCode": "6fa59369-3500-41c6-937a-d633e56f045d"
+                                        "description": "Error en la (operación) del (GFP name)"
                                     }
                                 }
                             }
                         }
                     }
                 },
-                "description": "(500) Respuesta obtenida cuando ocurre un error de servidor."
-            },
-            "UnauthorizedRs": {
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "$ref": "#/components/schemas/ErrorMessageDef"
-                        },
-                        "examples": {
-                            "UnauthorizedError": {
-                                "value": {
-                                    "error": {
-                                        "status": 401,
-                                        "error": "Unauthorized",
-                                        "description": "Message",
-                                        "internalCode": "6fa59369-3500-41c6-937a-d633e56f045d"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
-                "description": "(401) Respuesta obtenida cuando se presenta error de autorización."
+                "description": "Answer error gfp (operation)"
             }
         },
         "parameters": {
@@ -425,21 +611,16 @@
                 },
                 "in": "header",
                 "required": true
+            },
+            "id": {
+                "name": "id",
+                "description": "Iddel GMF",
+                "schema": {
+                    "type": "string"
+                },
+                "in": "path",
+                "required": true
             }
-        },
-        "securitySchemes": {
-            "X-Api-Key": {
-                "type": "apiKey",
-                "description": "Assigned to each client/product to consumes",
-                "name": "X-Api-Key",
-                "in": "header"
-            }
-        }
-    },
-    "x-amazon-apigateway-request-validators": {
-        "Validate body, query string parameters, and headers": {
-            "validateRequestParameters": true,
-            "validateRequestBody": true
         }
     }
 }

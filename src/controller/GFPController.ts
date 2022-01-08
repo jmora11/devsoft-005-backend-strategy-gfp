@@ -31,6 +31,24 @@ class GFPController {
         const response = await context.getGFPById(requestHeaders, +req.params.id);
         res.status(200).send(response);
     }
+
+    @measure
+    public async update(req: Request, res: Response) {
+        const requestHeaders = new RequestHeadersModel(req);
+        const product = requestHeaders['x-Product'] as string;
+        const context = new GFPContext(product);
+        const response = await context.updateGFPById(requestHeaders, req.body, +req.params.id);
+        res.status(200).send(response);
+    }
+
+    @measure
+    public async delete(req: Request, res: Response) {
+        const requestHeaders = new RequestHeadersModel(req);
+        const product = requestHeaders['x-Product'] as string;
+        const context = new GFPContext(product);
+        const response = await context.deleteGFPById(requestHeaders, +req.params.id);
+        res.status(200).send(response);
+    }
 }
 
 const gfpController = new GFPController();

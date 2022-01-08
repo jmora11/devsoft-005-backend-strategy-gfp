@@ -1,5 +1,5 @@
 import cookieParser from 'cookie-parser';
-import express from 'express';
+import express, { Request, Response } from 'express';
 import actuator from 'express-actuator';
 import logger from 'morgan';
 import path from 'path';
@@ -34,11 +34,19 @@ app.use((_req, res, next) => {
 app.use(fullApiPath, routerGFP);
 
 app.use((err: any, req: any, res: any, next:any) => {
-   console.log('AAAAAAAAAAAAAAAAAAA')
    res.status(err.statusCode).json({
       data: {
          status: err.statusCode,
          description: err.message
+      }
+   });
+});
+
+app.use((req: Request, res: Response) => {
+   res.status(404).json({
+      data: {
+         status: 404,
+         description: `Route ${req.url} not found`
       }
    });
 });

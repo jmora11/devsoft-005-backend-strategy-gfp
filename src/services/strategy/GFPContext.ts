@@ -1,4 +1,5 @@
 import { DefaultResponseDTO } from "../../models/DefaultResponseDTO";
+import { IGetAllGFP, IGetItemGFP } from "../../models/IGetAllGFP";
 import { IGFPRq } from "../../models/IGFPRq";
 import IGFPRs from "../../models/IGFPRs";
 import { RequestHeadersModel } from "../../models/IRequestHeaders";
@@ -24,7 +25,7 @@ export default class GFPContext {
         }
     }
 
-    public async getAllGFP(headers: RequestHeadersModel, body: IGFPRq): Promise<DefaultResponseDTO> {
+    public async getAllGFP(headers: RequestHeadersModel, body: IGFPRq): Promise<IGetAllGFP> {
         try {
             return await this.gfpImplementation.getAllGFP(headers, body);
         } catch (error) {
@@ -32,7 +33,7 @@ export default class GFPContext {
         }
     }
 
-    public async getGFPById(headers: RequestHeadersModel, id: number): Promise<DefaultResponseDTO> {
+    public async getGFPById(headers: RequestHeadersModel, id: number): Promise<IGetItemGFP |DefaultResponseDTO> {
         try {
             return await this.gfpImplementation.getGFPById(headers, id);
         } catch (error) {
