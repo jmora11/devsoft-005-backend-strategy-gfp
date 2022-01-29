@@ -1,6 +1,6 @@
 export interface IGetAllGFP {
     games: IGetItemGFP[];
-};
+}
 
 export interface IGetItemGFP {
     id: number;
@@ -9,4 +9,4 @@ export interface IGetItemGFP {
     description: string;
     createdAt?: any;
     updatedAt?: any;
-};
+}

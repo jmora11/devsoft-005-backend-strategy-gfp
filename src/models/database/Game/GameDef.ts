@@ -1,7 +1,7 @@
 import { DataTypes, Model, Optional } from 'sequelize';
 import { sequelizeMySQL } from '../../../database/conection';
 
-interface GameAttributes {
+interface IGameAttributes {
     id: number;
     name: string;
     description: string;
@@ -9,40 +9,40 @@ interface GameAttributes {
     createdAt?: Date;
 }
 
-export interface GameInput extends Optional<GameAttributes, 'id'> {}
+export interface IGameInput extends Optional<IGameAttributes, 'id'> {}
 
-export interface GameOuput extends Required<GameAttributes> {}
+export interface IGameOuput extends Required<IGameAttributes> {}
 
-class Game extends Model<GameAttributes, GameInput> implements GameAttributes {
-    public id!: number
-    public name!: string
-    public description!: string
-    public image!: string
-    
+class Game extends Model<IGameAttributes, IGameInput> implements IGameAttributes {
+    public id!: number;
+    public name!: string;
+    public description!: string;
+    public image!: string;
+
     // timestamps!
     public readonly createdAt!: Date;
 }
 
 Game.init({
-    id: {
-        type: DataTypes.INTEGER.UNSIGNED,
-        autoIncrement: true,
-        primaryKey: true,
-    },
-    name: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    image: {
-        type: DataTypes.TEXT,
-        allowNull: false,
-        unique: false
-    },
     description: {
         type: DataTypes.TEXT
-    }
+    },
+    id: {
+        autoIncrement: true,
+        primaryKey: true,
+        type: DataTypes.INTEGER.UNSIGNED
+    },
+    image: {
+        allowNull: false,
+        type: DataTypes.TEXT,
+        unique: false
+    },
+    name: {
+        allowNull: false,
+        type: DataTypes.STRING
+    },
 }, {
   sequelize: sequelizeMySQL
-})
+});
 
 export default Game;

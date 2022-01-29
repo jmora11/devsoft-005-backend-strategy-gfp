@@ -1,10 +1,9 @@
-import { DefaultResponseDTO } from "../../models/DefaultResponseDTO";
-import { IGetAllGFP, IGetItemGFP } from "../../models/IGetAllGFP";
-import { IGFPRq } from "../../models/IGFPRq";
-import IGFPRs from "../../models/IGFPRs";
-import { RequestHeadersModel } from "../../models/IRequestHeaders";
-import { GamesStrategy } from "../strategies/GamesStrategy";
-import IGFPStrategy from "./IGFPStrategy";
+import { DefaultResponseDTO } from '../../models/DefaultResponseDTO';
+import { IGetAllGFP, IGetItemGFP } from '../../models/IGetAllGFP';
+import { IGFPRq } from '../../models/IGFPRq';
+import { RequestHeadersModel } from '../../models/IRequestHeaders';
+import { GamesStrategy } from '../strategiesImp/GamesStrategy';
+import IGFPStrategy from './IGFPStrategy';
 
 export default class GFPContext {
 

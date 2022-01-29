@@ -7,19 +7,19 @@ import config from './config';
 import dbInit from './models/database/init';
 
 dbInit();
- 
+
 import routerGFP from './routes/router';
 
 const app = express();
 const apiPath = config.apiPath;
 const fullApiPath = `${apiPath}/V1/Enterprise/`;
- 
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../static')));
-app.use((_req, res, next) => {
+app.use((req, res, next) => {
    res.header('Access-Control-Allow-Origin', '*'); // NOSONAR
    res.header(
        'Access-Control-Allow-Headers',
@@ -33,11 +33,11 @@ app.use((_req, res, next) => {
 
 app.use(fullApiPath, routerGFP);
 
-app.use((err: any, req: any, res: any, next:any) => {
+app.use((err: any, req: any, res: any, next: any) => {
    res.status(err.statusCode).json({
       data: {
-         status: err.statusCode,
-         description: err.message
+         description: err.message,
+         status: err.statusCode
       }
    });
 });
@@ -45,8 +45,8 @@ app.use((err: any, req: any, res: any, next:any) => {
 app.use((req: Request, res: Response) => {
    res.status(404).json({
       data: {
-         status: 404,
-         description: `Route ${req.url} not found`
+         description: `Route ${req.url} not found`,
+         status: 404
       }
    });
 });

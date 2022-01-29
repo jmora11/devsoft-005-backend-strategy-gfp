@@ -1,4 +1,4 @@
-import { DataDTO } from "./database/DataDTO";
+import { DataDTO } from './database/DataDTO';
 
 export class DefaultResponseDTO {
     public data: DataDTO;

@@ -1,7 +1,7 @@
-import { Request, Response } from "express";
-import { measure } from "../decorators/measure";
-import { RequestHeadersModel } from "../models/IRequestHeaders";
-import GFPContext from "../services/strategy/GFPContext";
+import { Request, Response } from 'express';
+import { measure } from '../decorators/measure';
+import { RequestHeadersModel } from '../models/IRequestHeaders';
+import GFPContext from '../services/strategy/GFPContext';
 
 class GFPController {
 

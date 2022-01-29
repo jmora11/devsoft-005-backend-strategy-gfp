@@ -6,4 +6,4 @@ export default {
     bdPort: process.env.DB_PORT || 3306,
     bdUserName: process.env.DB_USER_NAME || 'root',
     port: process.env.PORT || '9018'
-}
+};

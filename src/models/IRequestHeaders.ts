@@ -1,13 +1,13 @@
 import { Request } from 'express';
- 
+
 type stringNullable = string | null | undefined;
- 
+
 export const xRqUID = 'X-RqUID';
 export const xCustIdentType = 'X-CustIdentType';
 export const xCustIdentNum = 'X-CustIdentNum';
 export const xCellphone = 'X-CustCellphone';
 export const xProduct = 'x-Product';
- 
+
 export class RequestHeadersModel {
    public 'X-RqUID': stringNullable;
    public 'X-CustIdentType': stringNullable;

@@ -1,7 +1,7 @@
-import { DefaultResponseDTO } from "../../models/DefaultResponseDTO";
-import { IGetAllGFP, IGetItemGFP } from "../../models/IGetAllGFP";
-import { IGFPRq } from "../../models/IGFPRq";
-import { RequestHeadersModel } from "../../models/IRequestHeaders";
+import { DefaultResponseDTO } from '../../models/DefaultResponseDTO';
+import { IGetAllGFP, IGetItemGFP } from '../../models/IGetAllGFP';
+import { IGFPRq } from '../../models/IGFPRq';
+import { RequestHeadersModel } from '../../models/IRequestHeaders';
 
 export default interface IGFPStrategy {
     saveGFP(headers: RequestHeadersModel, body: IGFPRq): Promise<DefaultResponseDTO>;
